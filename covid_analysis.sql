@@ -1,1 +1,1 @@
-git add covid_analysis.sql
+CREATE DATABASE covid_analysis;
