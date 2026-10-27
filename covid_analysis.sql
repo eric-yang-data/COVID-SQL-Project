@@ -9,6 +9,8 @@ SELECT *
 FROM coviddeaths
 LIMIT 5;
 
+-- QUERIES ON DEATHS
+
 -- Query 1 (Looking At Data)
 
 SELECT location, date, total_cases, new_cases, total_deaths, population
@@ -54,6 +56,17 @@ WHERE continent IS NOT NULL
 GROUP BY location
 ORDER BY total_death_count DESC NULLS LAST;
 
+-- Query 6 Highest death percentage among infected people, by country
+SELECT location AS country,
+       MAX(total_cases) AS total_cases,
+       MAX(total_deaths) AS total_deaths,
+       (MAX(total_deaths)::numeric / NULLIF(MAX(total_cases), 0)) * 100 AS death_percentage
+FROM coviddeaths
+WHERE continent IS NOT NULL
+GROUP BY location
+ORDER BY death_percentage DESC NULLS LAST
+LIMIT 10;
+
 
 -- Creating a View by using Join and Window Funtions
 CREATE OR REPLACE VIEW percent_population_vaccinated AS
@@ -81,3 +94,5 @@ WHERE location LIKE '%States%'
 ORDER BY date;
 
 SELECT * FROM percent_population_vaccinated LIMIT 10;
+
+
