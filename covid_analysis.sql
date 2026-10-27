@@ -26,8 +26,10 @@ WHERE location LIKE '%States%'
   AND continent IS NOT NULL
 ORDER BY location, date;
 
--- Query 3 (Here, I'm looking at the top 10 percent of daily infected)
-SELECT date, new_cases,
+-- Query 3 (Here, I'm looking at the top 10 entires where the percentage of daily infected was highest)
+SELECT location AS country,
+    date,
+    new_cases,
        (new_cases::numeric / population) * 100 AS daily_percent_infected
 FROM coviddeaths
 WHERE location LIKE '%States%'
