@@ -77,3 +77,5 @@ SELECT *,
 FROM percent_population_vaccinated
 WHERE location LIKE '%States%'
 ORDER BY date;
+
+SELECT * FROM percent_population_vaccinated LIMIT 10;
