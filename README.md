@@ -1,7 +1,7 @@
 # COVID-SQL-Project
 
 This Project was on analyzing data from Covid vaccines and deaths, to find numbers, probe insights, and try to better make sense of our data. In this project, I use data from Alex the Analyst's repository linked here:
-(https://github.com/AlexTheAnalyst/PortfolioProjects/blob/main/CovidDeaths.xlsx and https://github.com/AlexTheAnalyst/PortfolioProjects/blob/main/CovidVaccinations.xlsx). Using PostgreSQL, I worked through question about infection rates, mortality, and vaccination rollout across about 85,0000 country-day records using multiple tools and techniques.
+(https://github.com/AlexTheAnalyst/PortfolioProjects/blob/main/CovidDeaths.xlsx and https://github.com/AlexTheAnalyst/PortfolioProjects/blob/main/CovidVaccinations.xlsx). Using PostgreSQL, I worked through question about infection rates, mortality, and vaccination rollout across about 85,000 country-day records using multiple tools and techniques.
 
 
 ## Questions Answered
