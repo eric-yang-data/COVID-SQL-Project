@@ -51,3 +51,29 @@ FROM coviddeaths
 WHERE continent IS NOT NULL
 GROUP BY location
 ORDER BY total_death_count DESC NULLS LAST;
+
+
+-- Creating a View by using Join and Window Funtions
+CREATE OR REPLACE VIEW percent_population_vaccinated AS
+SELECT dea.continent,
+       dea.location,
+       dea.date,
+       dea.population,
+       vac.new_vaccinations,
+       SUM(vac.new_vaccinations) OVER (
+           PARTITION BY dea.location
+           ORDER BY dea.date
+       ) AS rolling_people_vaccinated
+FROM coviddeaths dea
+JOIN covidvaccinations vac
+  ON dea.location = vac.location
+ AND dea.date = vac.date
+WHERE dea.continent IS NOT NULL;
+
+
+-- Using View in a Query
+SELECT *,
+       (rolling_people_vaccinated::numeric / population) * 100 AS percent_vaccinated
+FROM percent_population_vaccinated
+WHERE location LIKE '%States%'
+ORDER BY date;
